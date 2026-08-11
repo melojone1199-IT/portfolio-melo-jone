@@ -19,7 +19,114 @@
     >
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+:root{
+    --verde:#198754;
+    --verde-escuro:#0f5132;
+    --claro:#f6fbf8;
+    --texto:#1f2937;
+}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--texto);
+    background:#fff;
+}
+.navbar{
+    background:rgba(15,81,50,.97);
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+}
+.navbar .nav-link{color:#fff!important;margin-left:10px}
+.navbar .nav-link:hover{color:#b7f0d0!important}
+.hero{
+    min-height:100vh;
+    padding:140px 0 90px;
+    display:flex;
+    align-items:center;
+    color:#fff;
+    background:linear-gradient(135deg,#0f5132 0%,#198754 55%,#20a464 100%);
+}
+.hero h1{font-size:clamp(2.3rem,5vw,4rem);font-weight:700}
+.hero h1 span{color:#b7f0d0}
+.hero h3{min-height:34px;color:#d9f8e7}
+.hero p{font-size:1.05rem;line-height:1.8;max-width:650px}
+.social a{
+    color:#fff;
+    font-size:1.35rem;
+    margin-right:15px;
+    text-decoration:none;
+    transition:.2s;
+}
+.social a:hover{color:#b7f0d0;transform:translateY(-2px)}
+.profile-wrap{position:relative}
+.perfil{
+    width:330px;
+    height:330px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid rgba(255,255,255,.8);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    background:#fff;
+}
+section{padding-top:90px!important;padding-bottom:90px!important}
+#sobre{background:#fff}
+#servicos{background:var(--claro)}
+#contacto{background:#fff}
+.titulo{
+    color:var(--verde);
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+#sobre h2,#servicos h2,#contacto h2{font-weight:700;margin-bottom:18px}
+#sobre p{line-height:1.8;color:#555}
+.progress{height:10px;background:#e9ecef;border-radius:20px}
+.progress-bar{border-radius:20px}
+.service-card{
+    background:#fff;
+    border-radius:16px;
+    padding:30px 24px;
+    border:1px solid #e7eee9;
+    box-shadow:0 8px 25px rgba(0,0,0,.07);
+    transition:.25s;
+}
+.service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(25,135,84,.16);
+}
+.service-card > i{
+    color:var(--verde);
+    font-size:2rem;
+    margin-bottom:18px;
+}
+.service-card h4{font-size:1.2rem;font-weight:700}
+.service-card p{color:#666;line-height:1.7}
+.contact-box{
+    background:linear-gradient(135deg,#0f5132,#198754);
+    border-radius:18px;
+    padding:35px 20px;
+}
+.contact-box .btn-outline-light{
+    color:#fff!important;
+    border-color:#fff!important;
+}
+.contact-box .btn-outline-light:hover{
+    background:#fff!important;
+    color:var(--verde)!important;
+}
+footer{background:#0b3823;color:#fff}
+@media(max-width:991.98px){
+    .hero{text-align:center;padding-top:130px}
+    .hero p{margin-left:auto;margin-right:auto}
+    .navbar .nav-link{margin-left:0}
+}
+@media(max-width:575.98px){
+    .perfil{width:250px;height:250px}
+    .hero{padding-top:120px}
+    section{padding-top:65px!important;padding-bottom:65px!important}
+}
+</style>
 </head>
 
 <body>
@@ -163,7 +270,7 @@
                     <!-- WhatsApp -->
 
                     <a
-                        href="https://wa.me/258SEUNUMERO"
+                        href="https://wa.me/258846926111"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="WhatsApp"
@@ -560,7 +667,28 @@
 
 <!-- JavaScript Personalizado -->
 
-<script src="js/script.js"></script>
+<script>
+const typing = document.getElementById("typing");
+const texts = [
+    "Desenvolvedor Web",
+    "Designer Gráfico",
+    "Criador de Soluções Digitais"
+];
+let ti=0, ci=0, apagando=false;
+function escrever(){
+    if(!typing) return;
+    const texto=texts[ti];
+    typing.textContent = apagando ? texto.substring(0,ci--) : texto.substring(0,ci++);
+    let velocidade = apagando ? 45 : 85;
+    if(!apagando && ci > texto.length){
+        apagando=true; velocidade=1200;
+    }else if(apagando && ci < 0){
+        apagando=false; ci=0; ti=(ti+1)%texts.length; velocidade=300;
+    }
+    setTimeout(escrever,velocidade);
+}
+escrever();
+</script>
 
 </body>
 </html>
